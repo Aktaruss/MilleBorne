@@ -5,7 +5,7 @@ public class Parade extends Bataille {
 	public Parade(int nombre, Type type) {
 		super(nombre, type);
 	}
-	
+
 	@Override
 	public String toString() {
 		switch (this.getType()) {
@@ -18,7 +18,6 @@ public class Parade extends Bataille {
 		default:
 			return "Reparations";
 		}
-	}	
-	
-	
+	}
+
 }
