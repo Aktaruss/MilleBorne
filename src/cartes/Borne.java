@@ -15,10 +15,17 @@ public class Borne extends Carte {
 	public void setKm(int km) {
 		this.km = km;
 	}
-	
+
 	@Override
 	public String toString() {
-		return km+" Km";
+		return km + " Km";
 	}
-	
+
+	public boolean equals(Object obj) {
+		if (obj instanceof Borne) {
+			Borne carte = (Borne) obj;
+			return km == carte.getKm();
+		}
+		return false;
+	}
 }
