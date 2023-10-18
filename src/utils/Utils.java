@@ -3,9 +3,9 @@ package utils;
 import java.util.*;
 
 public class Utils {
-	
+
 	public Utils() {
-		//contructeur vide
+		// contructeur vide
 	}
 
 	public static <C> C extraire(List<C> liste) {
@@ -36,11 +36,20 @@ public class Utils {
 
 	public static <C> List<C> rassembler(List<C> liste) {
 		List<C> res = new ArrayList<>();
-		for (int i = 1; i < liste.size(); i++) {
-			C cCourant = liste.get(i);
-			C cPrecedent = liste.get(i - 1);
-			if (!cCourant.equals(cPrecedent)) {
+		ListIterator<C> iterator = liste.listIterator();
+		if (liste.isEmpty()) {
+			return res;
+		}
+		C cPrecedent = iterator.next();
+		while (iterator.hasNext()) {
+			C cCourant = iterator.next();
+			if (cPrecedent.equals(cCourant)) {
+				if (!res.contains(cCourant)) {
+					res.add(cPrecedent);
+				}
 				res.add(cCourant);
+			} else {
+				cPrecedent = cCourant;
 			}
 		}
 		return res;
@@ -52,19 +61,24 @@ public class Utils {
 		}
 		ListIterator<C> iterator = liste.listIterator();
 		C cPrecedent = iterator.next();
+		int nbfait = 1;
 
 		while (iterator.hasNext()) {
 			C cCourant = iterator.next();
-			if (!cCourant.equals(cPrecedent)) {
-				ListIterator<C> reverseIterator = liste.listIterator(liste.size());
-				while (reverseIterator.hasPrevious()) {
-					C cPrecedentCopie = reverseIterator.previous();
-					if (cPrecedentCopie.equals(cPrecedent)) {
-						return true;
-					}
-				}
-				return false;
+			nbfait++;
+			while (iterator.hasNext() && cPrecedent.equals(cCourant)) {
+				cCourant = iterator.next();
+				nbfait++;
 			}
+
+			ListIterator<C> iteratorFin = liste.listIterator(nbfait);
+			while (iteratorFin.hasNext()) {
+				C cFin = (C) iteratorFin.next();
+				if (cFin == cPrecedent) {
+					return false;
+				}
+			}
+
 		}
 		return true;
 	}

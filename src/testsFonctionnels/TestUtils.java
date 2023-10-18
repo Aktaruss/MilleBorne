@@ -18,6 +18,14 @@ public class TestUtils {
 		System.out.println("Liste liste1 : "+liste1.toString()+"\n");
 		System.out.println("Liste liste2 : "+liste2.toString()+"\n");
 		System.out.println("Liste liste3 : "+liste3.toString()+"\n");
+		boolean videBool = Utils.verifierRassemblement(vide);
+		boolean liste1Bool = Utils.verifierRassemblement(liste1);
+		boolean liste2Bool = Utils.verifierRassemblement(liste2);
+		boolean liste3Bool = Utils.verifierRassemblement(liste3);
+		System.out.println("Liste vide pas rassembler verification : "+videBool+"\n");
+		System.out.println("Liste liste1 pas rassembler verification : "+liste1Bool+"\n");
+		System.out.println("Liste liste2 pas rassembler verification : "+liste2Bool+"\n");
+		System.out.println("Liste liste3 pas rassembler verification : "+liste3Bool+"\n");
 		List<C> videRas = Utils.rassembler(vide);
 		List<C> liste1Ras = Utils.rassembler(liste1);
 		List<C> liste2Ras = Utils.rassembler(liste2);
@@ -56,7 +64,7 @@ public class TestUtils {
 		liste3.add(1);
 		liste3.add(1);
 		liste3.add(2);
-		liste3.add(3);
+		liste3.add(2);
 		liste3.add(1);
 		testMelange(listeJeuDeCartes);
 		testRassemblement(vide, liste1, liste2, liste3);
