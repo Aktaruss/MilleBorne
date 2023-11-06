@@ -4,10 +4,6 @@ import java.util.*;
 
 public class Utils {
 
-	public Utils() {
-		// contructeur vide
-	}
-
 	public static <C> C extraire(List<C> liste) {
 		int i = (int) (Math.random() * ((liste.size() - 1) - 0));
 		C res = liste.get(i);

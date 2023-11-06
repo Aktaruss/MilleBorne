@@ -1,13 +1,13 @@
 package jeu;
 
-import java.util.List;
+import cartes.*;
 import java.util.*;
 
 public interface Main {
 	
-	public 	<C> void prendre(C cartes);
+	public void prendre(Carte carte);
 	
-	public <C> void jouer(C cartes);
+	public void jouer(Carte carte);
 	
 	public static <C> ListIterator<C> iterateurCarte(List<C> liste) {
 		return liste.listIterator();

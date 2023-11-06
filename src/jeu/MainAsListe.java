@@ -3,23 +3,18 @@ package jeu;
 import java.util.*;
 import cartes.*;
 
-public class MainAsListe<C extends Carte> implements Main{
-	private List<C> liste = new ArrayList<>();
-	
-	public MainAsListe() {
-		// TODO Auto-generated constructor stub
+public class MainAsListe implements Main {
+	private List<Carte> cartes = new ArrayList<>();
+
+	@Override
+	public void prendre(Carte carte) {
+		cartes.add(carte);
 	}
 
 	@Override
-	public <C> void prendre(C cartes) {
-		liste.add(cartes);
-	}
-
-	@Override
-	public <C> void jouer(C cartes) {
-		assert liste.contains(cartes);
-		liste.remove(cartes);
-		
+	public void jouer(Carte carte) {
+		assert cartes.contains(carte);
+		cartes.remove(carte);
 	}
 
 }
