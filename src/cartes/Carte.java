@@ -1,8 +1,15 @@
 package cartes;
 
+import jeu.*;
+import cartes.Probleme.Type;
+
 public abstract class Carte {
 	private int nombre;
-
+	public static final Bataille FEU_ROUGE = new Attaque(0, Type.FEU);
+	public static final Bataille FEU_VERT = new Parade(0, Type.FEU);
+	
+	public abstract boolean appliquer(Joueur j);
+	
 	protected Carte(int nombre) {
 		this.nombre = nombre;
 	}

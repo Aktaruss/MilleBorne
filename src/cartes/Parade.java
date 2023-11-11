@@ -1,5 +1,9 @@
 package cartes;
 
+import java.util.List;
+
+import jeu.Joueur;
+
 public class Parade extends Bataille {
 
 	public Parade(int nombre, Type type) {
@@ -18,6 +22,24 @@ public class Parade extends Bataille {
 		default:
 			return "Reparations";
 		}
+	}
+
+	@Override
+	public boolean appliquer(Joueur j) {
+		boolean res;
+		if (super.appliquer(j)) {
+			res = true;
+		} else {
+			List<Bataille> pileBat = j.getPileBataille();
+			Bataille c = pileBat.get(0);
+			if (c.getClass() != this.getClass() && getType()==c.getType()) {
+				res = true;
+				j.ajouterBataille(this);
+			} else {
+				res = false;
+			}
+		}
+		return res;
 	}
 
 }

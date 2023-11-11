@@ -23,6 +23,11 @@ public class TestJoueur {
 
 		System.out.println("\n\nTEST LIMITE");
 		joueur.getcollecBorne().clear();
+		
+		// Test 0 : Limite avec pile vide
+				int limiteVitesse0 = joueur.getLimite();
+				System.out.println(
+						"Test 0 : Limite avec pile vide -> Limite de vitesse : " + limiteVitesse0 + " km/h");
 
 		// Test 1 : Limite sans fin de limite ni botte de feu
 		Limite limite1 = new DebutLimite(1);
@@ -54,35 +59,35 @@ public class TestJoueur {
 		joueur.getSetBote().clear();
 
 		// Test 1 : Feu Rouge (true)
-		joueur.ajouterBataille(new Attaque(1, Type.FEU));
-		System.out.println("Test 1 : Est bloqué ? " + joueur.estBloque());
+		joueur.ajouterBataille(Carte.FEU_ROUGE);
+		System.out.println("Test 1 : Est bloque ? " + joueur.estBloque());
 
-		// Test 2 : Véhicule Prioritaire (false)
+		// Test 2 : Vehicule Prioritaire (false)
 		joueur.ajouterBotte(new Botte(1, Type.FEU));
-		System.out.println("Test 2 : Est bloqué ? " + joueur.estBloque());
+		System.out.println("Test 2 : Est bloque ? " + joueur.estBloque());
 
 		// Test 3 : Accident (true)
 		joueur.ajouterBataille(new Attaque(1, Type.ACCIDENT));
-		System.out.println("Test 3 : Est bloqué ? " + joueur.estBloque());
+		System.out.println("Test 3 : Est bloque ? " + joueur.estBloque());
 
 		// Test 4 : As du Volant (false)
 		joueur.ajouterBotte(new Botte(1, Type.ACCIDENT));
-		System.out.println("Test 4 : Est bloqué ? " + joueur.estBloque());
+		System.out.println("Test 4 : Est bloque ? " + joueur.estBloque());
 
 		// Test 5 : Panne d'Essence (true)
 		joueur.ajouterBataille(new Attaque(1, Type.ESSENCE));
-		System.out.println("Test 5 : Est bloqué ? " + joueur.estBloque());
+		System.out.println("Test 5 : Est bloque ? " + joueur.estBloque());
 
 		// Test 6 : Essence (false)
 		joueur.ajouterBotte(new Botte(1, Type.ESSENCE));
-		System.out.println("Test 6 : Est bloqué ? " + joueur.estBloque());
+		System.out.println("Test 6 : Est bloque ? " + joueur.estBloque());
 
 		// Test 7 : Botte Effacer (true)
 		joueur.getSetBote().clear();
-		System.out.println("Test 7 : Est bloqué ? " + joueur.estBloque());
+		System.out.println("Test 7 : Est bloque ? " + joueur.estBloque());
 
 		// Test 8 : Feu Vert (false)
-		joueur.ajouterBataille(new Parade(1, Type.FEU));
-		System.out.println("Test 8 : Est bloqué ? " + joueur.estBloque());
+		joueur.ajouterBataille(Carte.FEU_VERT);
+		System.out.println("Test 8 : Est bloque ? " + joueur.estBloque());
 	}
 }
